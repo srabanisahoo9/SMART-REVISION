@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import "../style/questionForm.css";
 const QuestionForm = () => {
   const [questions, setQuestions] = useState([]);
   const [newQuestion, setNewQuestion] = useState('');
@@ -25,9 +25,8 @@ const QuestionForm = () => {
   };
 
   return (
-    <div>
-      
-      <div>
+    <div className="question-form">
+      <div className="select-container">
         <select>
           {questions.map((q) => (
             <option key={q.serial} value={q.serial}>
@@ -36,13 +35,15 @@ const QuestionForm = () => {
           ))}
         </select>
       </div>
-      <input
-        type="text"
-        placeholder="Enter your question"
-        value={newQuestion}
-        onChange={(e) => setNewQuestion(e.target.value)}
-      />
-      <button onClick={handleAddQuestion}>Add Question</button>
+      <div className="input-container">
+        <input
+          type="text"
+          placeholder="Enter your question"
+          value={newQuestion}
+          onChange={(e) => setNewQuestion(e.target.value)}
+        />
+        <button onClick={handleAddQuestion}>Add Question</button>
+      </div>
     </div>
   );
 };

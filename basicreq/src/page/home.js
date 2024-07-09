@@ -12,6 +12,8 @@ const Home = () => {
       <h1>this is home page</h1>
       <button onClick={() => handleClick("/login")}>login</button>
       <button onClick={() => handleClick("/register")}>register</button>
+      
+      <button onClick={() => handleClick("/form")}>form</button>
     </>
   );
 };
