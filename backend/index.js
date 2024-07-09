@@ -42,6 +42,12 @@ app.get("/test", (req, res) => {
   res.json({ message: "srabani" });
 });
 
+// Very important
+const FormRouter=require('./route/form');
+app.use("/form",FormRouter);
+
+
 app.listen(4000, () => {
   console.log("server is running on port 4000");
 });
+
