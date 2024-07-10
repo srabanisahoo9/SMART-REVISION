@@ -15,7 +15,7 @@ class FormController {
         questionLink,
         notes,
         createdBy,
-        questionName
+        questionName,
       });
 
       // if we have reached till this, there must be no errors
@@ -30,6 +30,29 @@ class FormController {
     res.json({ message: "hello" });
   }
   // cancel subsbscription
+
+  // get all the questions saved
+  static async getAll(req, res) {
+    try {
+      const createdBy = new mongoose.Types.ObjectId("668dab261a490dad98261fbc");
+      const getAllFormData = await Form.find({ createdBy: createdBy });
+      res.status(201).json({ success: true, allFormData: getAllFormData });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error: error });
+    }
+  }
+  static async deleteAll(req, res) {
+    try {
+      const createdBy = new mongoose.Types.ObjectId("668dab261a490dad98261fbc");
+      console.log("yaha tak pahuch gaya");
+      await Form.deleteMany({ createdBy: createdBy });
+      res.status(201).json({ success: true, message: "all question deleted" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error: error });
+    }
+  }
 }
 
 module.exports = FormController;
